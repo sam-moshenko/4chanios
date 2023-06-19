@@ -37,6 +37,7 @@ class ThreadsCell: BaseTableViewCell {
     func configure(_ model: ThreadsViewModel.CellModel) {
         titleLabel.text = model.title
         descriptionLabel.text = model.description
+        iconImageView.isHidden = model.imageUrl == nil
         iconImageView.kf.setImage(with: model.imageUrl)
     }
 }

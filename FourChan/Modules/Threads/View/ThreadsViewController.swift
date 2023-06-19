@@ -36,6 +36,9 @@ class ThreadsViewController: UIViewController {
                 vc.contentView.configure(viewModel)
             case .chooseBoard(let boards):
                 vc.showBoards(boards)
+            case .openThread(let cellModels):
+                let threadVc = ThreadViewController(posts: cellModels)
+                vc.present(threadVc, animated: true)
             }
         }
     }
