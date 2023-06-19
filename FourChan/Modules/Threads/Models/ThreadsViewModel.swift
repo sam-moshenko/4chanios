@@ -4,8 +4,12 @@ struct ThreadsViewModel {
     var board: Board
     var cells: [CellModel]
     
-    enum Board: String {
-        case a, b, random
+    enum Board: String, CaseIterable {
+        case a, v, mu, gd
+        
+        var description: String {
+            "/\(rawValue)/"
+        }
     }
     
     struct CellModel {
