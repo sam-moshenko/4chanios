@@ -11,12 +11,14 @@ struct ThreadsViewModel {
     struct CellModel {
         var title: String
         var description: String
-        var imageUrl: URL
+        var imageUrl: URL?
         
-        init(data: ThreadResponse.Post) {
+        init(data: ThreadResponse.Post, board: String) {
             title = data.sub ?? "Empty"
             description = data.com ?? "Empty"
-            imageUrl = URL(string: "https://is2.4chan.org/b/1687173192161749.jpg")!
+            if let tim = data.tim, let ext = data.ext {
+                imageUrl = URL(string: "https://i.4cdn.org/\(board)/\(tim)\(ext)")!
+            }
         }
     }
 }

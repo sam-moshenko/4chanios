@@ -8,6 +8,8 @@ class Provider {
     }
     
     func request<T: Decodable>(_ partialPath: String) -> Promise<T> {
-        AF.request("\(Constants.baseUrl)\(partialPath)").toPromise()
+        AF.request("\(Constants.baseUrl)\(partialPath)").toPromise().catch {
+            print($0)
+        }
     }
 }

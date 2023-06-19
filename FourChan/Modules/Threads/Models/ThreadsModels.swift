@@ -16,7 +16,7 @@ struct ThreadResponse: Decodable {
         let no: Int
         let sub: String?
         let com: String?
-        let filename: String?
+        let tim: Int?
         let ext: String?
     }
 }

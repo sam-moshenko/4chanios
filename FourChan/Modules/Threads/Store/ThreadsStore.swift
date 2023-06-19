@@ -32,7 +32,7 @@ class ThreadsStore {
     private func getThreads() {
         provider.getThreads(board.rawValue).then {
             $0.map {
-                ThreadsViewModel.CellModel(data: $0.posts.first!)
+                ThreadsViewModel.CellModel(data: $0.posts.first!, board: self.board.rawValue)
             }
         }.then {
             self.state = .initial(.init(board: self.board, cells: $0))
