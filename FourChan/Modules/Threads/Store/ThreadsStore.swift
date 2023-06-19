@@ -31,6 +31,7 @@ class ThreadsStore {
             getThreads(board: board)
         case .didSelectThread(let cellModel):
             state = .openThread(cached[cellModel.id]!)
+            
         }
     }
     

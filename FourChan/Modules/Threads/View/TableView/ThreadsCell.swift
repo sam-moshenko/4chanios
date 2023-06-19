@@ -13,12 +13,22 @@ class ThreadsCell: BaseTableViewCell {
         $0.axis = .vertical
         $0.alignment = .leading
         $0.spacing = 4
-        $0.addArrangedSubview(titleLabel)
+        $0.addArrangedSubview(titleAndUsernameStackView)
         $0.addArrangedSubview(descriptionLabel)
+    }
+    
+    lazy var titleAndUsernameStackView: UIStackView = build {
+        $0.alignment = .center
+        $0.spacing = 10
+        $0.distribution = .fill
+        $0.addArrangedSubview(titleLabel)
+        $0.addArrangedSubview(username)
+        
     }
     
     var titleLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        $0.numberOfLines = 2
     }
     
     var descriptionLabel: UILabel = build {
@@ -28,7 +38,14 @@ class ThreadsCell: BaseTableViewCell {
     
     var iconImageView: UIImageView = build {
         $0.snp.makeConstraints { $0.size.equalTo(60) }
+        $0.contentMode = .scaleToFill
+        $0.layer.cornerRadius = 4
     }
+    
+    var username: UILabel = build {
+        $0.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+    }
+
     
     override func setup() {
         contentView.addSubview(horizontalStackView) { $0.edges.equalToSuperview().inset(4) }
@@ -37,6 +54,7 @@ class ThreadsCell: BaseTableViewCell {
     func configure(_ model: ThreadsViewModel.CellModel) {
         titleLabel.text = model.title
         descriptionLabel.text = model.description
+        username.text = model.name
         iconImageView.isHidden = model.imageUrl == nil
         iconImageView.kf.setImage(with: model.imageUrl)
     }
