@@ -19,6 +19,7 @@ class ThreadsCell: BaseTableViewCell {
     
     var titleLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        $0.numberOfLines = 2
     }
     
     var descriptionLabel: UILabel = build {
@@ -27,7 +28,14 @@ class ThreadsCell: BaseTableViewCell {
     }
     
     var iconImageView: UIImageView = build {
-        $0.snp.makeConstraints { $0.size.equalTo(60) }
+        $0.snp.makeConstraints {
+            make in
+            make.width.equalTo(60)
+            make.height.equalTo(60)
+        }
+        $0.layer.cornerRadius = 4
+        $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
     }
     
     override func setup() {

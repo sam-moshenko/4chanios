@@ -5,10 +5,23 @@ struct ThreadsViewModel {
     var cells: [CellModel]
     
     enum Board: String, CaseIterable {
-        case a, v, mu, gd
+        case a, v, mu, gd, fit, cancel
         
         var description: String {
-            "/\(rawValue)/"
+            switch self {
+            case .a:
+                return "/\(rawValue)/ - Anime & Manga"
+            case .v:
+                return "/\(rawValue)/ - Video Games"
+            case .mu:
+                return "/\(rawValue)/ - Music"
+            case .gd:
+                return "/\(rawValue)/ - Graphic Design"
+            case .fit:
+                return "/\(rawValue)/ - Fitness"
+            case .cancel:
+                return "Cancel"
+            }
         }
     }
     
