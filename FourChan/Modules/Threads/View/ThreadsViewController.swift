@@ -8,7 +8,6 @@ class ThreadsViewController: UIViewController {
     private let store: ThreadsStore = .init()
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
         view.addSubview(contentView) { $0.edges.equalTo(view.safeAreaLayoutGuide) }
         super.viewDidLoad()
         
@@ -16,14 +15,29 @@ class ThreadsViewController: UIViewController {
         store.dispatch(.viewDidLoad)
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateBackgroundColor()
+        }
+    }
+    
+    private func updateBackgroundColor() {
+        let isDarkMode = traitCollection.userInterfaceStyle == .dark
+        view.backgroundColor = isDarkMode ? .black : .white
+    }
+    
     func showBoards(_ boards: [ThreadsViewModel.Board]) {
-        let alertController = UIAlertController(title: "Choose board", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("CHOOSE", comment: "choose board"), message: nil, preferredStyle: .alert)
         boards.forEach { board in
             let action = UIAlertAction(title: board.description, style: .default) { _ in
                 self.store.dispatch(.boardDidChoose(board))
             }
             alertController.addAction(action)
         }
+        let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "cancel board"), style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
         present(alertController, animated: true)
     }
     
