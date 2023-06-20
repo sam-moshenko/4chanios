@@ -14,15 +14,18 @@ public class BaseView: UIView {
     public override func awakeFromNib() {
         super.awakeFromNib()
         setup()
+        setAction()
     }
     
     func setup() {}
+    func setAction() {}
 }
 
 public class BaseTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
+        setAction()
     }
     
     @available(*, unavailable)
@@ -31,12 +34,14 @@ public class BaseTableViewCell: UITableViewCell {
     }
     
     func setup() {}
+    func setAction() {}
 }
 
 public class BaseCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        setAction()
     }
     
     @available(*, unavailable)
@@ -45,4 +50,5 @@ public class BaseCollectionViewCell: UICollectionViewCell {
     }
     
     func setup() {}
+    func setAction() {}
 }

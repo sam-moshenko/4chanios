@@ -14,3 +14,4 @@ extension Provider {
         request("\(board)/thread/\(thread).json")
     }
 }
+

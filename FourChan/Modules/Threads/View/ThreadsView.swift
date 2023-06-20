@@ -42,6 +42,8 @@ class ThreadsView: BaseView {
     func boardButtonTapped() {
         delegate?.boardButtonTapped()
     }
+    
+    
 }
 
 extension ThreadsView: UITableViewDelegate {
