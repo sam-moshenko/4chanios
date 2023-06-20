@@ -11,5 +11,7 @@ class Provider {
         AF.request("\(Constants.baseUrl)\(partialPath)").toPromise().catch {
             print($0)
         }
+
     }
 }
+

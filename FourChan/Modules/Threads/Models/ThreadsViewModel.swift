@@ -5,10 +5,21 @@ struct ThreadsViewModel {
     var cells: [CellModel]
     
     enum Board: String, CaseIterable {
-        case a, v, mu, gd
+        case a, v, mu, gd , fit
         
         var description: String {
-            "/\(rawValue)/"
+                switch self {
+                case .a:
+                    return "/\(rawValue)/ - Anime & Manga"
+                case .v:
+                    return "/\(rawValue)/ - Video Games"
+                case .mu:
+                    return "/\(rawValue)/ - Music"
+                case .gd:
+                    return "/\(rawValue)/ - Graphic Design"
+                case .fit:
+                    return "/\(rawValue)/ - Fitness"
+                }
         }
     }
     
@@ -17,6 +28,9 @@ struct ThreadsViewModel {
         var title: String?
         var description: String?
         var imageUrl: URL?
+        var date : String?
+        var name : String?
+    
         
         init?(data: ThreadResponse.Post, board: String) {
             if data.sub == nil && data.com == nil && data.tim == nil { return nil }
@@ -26,6 +40,8 @@ struct ThreadsViewModel {
             if let tim = data.tim, let ext = data.ext {
                 imageUrl = URL(string: "https://i.4cdn.org/\(board)/\(tim)\(ext)")!
             }
+            date = data.now
+            name = data.name
         }
     }
 }
