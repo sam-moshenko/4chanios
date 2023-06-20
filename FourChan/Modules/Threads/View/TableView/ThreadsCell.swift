@@ -27,7 +27,11 @@ class ThreadsCell: BaseTableViewCell {
     }
     
     var iconImageView: UIImageView = build {
-        $0.snp.makeConstraints { $0.size.equalTo(60) }
+        $0.snp.makeConstraints {
+            $0.size.equalTo(60)
+        }
+        $0.layer.cornerRadius = 10
+        $0.layer.masksToBounds = true
     }
     
     override func setup() {
