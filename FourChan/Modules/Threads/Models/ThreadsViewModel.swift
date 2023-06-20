@@ -32,6 +32,8 @@ struct ThreadsViewModel {
         var title: String?
         var description: String?
         var imageUrl: URL?
+        var author: String?
+        var publishData: String?
         
         init?(data: ThreadResponse.Post, board: String) {
             if data.sub == nil && data.com == nil && data.tim == nil { return nil }
@@ -41,6 +43,8 @@ struct ThreadsViewModel {
             if let tim = data.tim, let ext = data.ext {
                 imageUrl = URL(string: "https://i.4cdn.org/\(board)/\(tim)\(ext)")!
             }
+            author = data.name
+            publishData = data.now
         }
     }
 }

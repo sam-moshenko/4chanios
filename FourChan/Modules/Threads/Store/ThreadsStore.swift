@@ -38,6 +38,7 @@ class ThreadsStore {
     }
     
     private func getThreads(board: ThreadsViewModel.Board) {
+//        state = .loading
         provider.getThreads(board.rawValue).then {
             $0.compactMap {
                 let cellModels = $0.posts.compactMap {

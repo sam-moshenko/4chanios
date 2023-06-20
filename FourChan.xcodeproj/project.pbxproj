@@ -40,6 +40,7 @@
 		AF69CE702A4197B100CA46FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF69CE722A4197B100CA46FC /* Localizable.strings */; };
 		AF69CE782A41995300CA46FC /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF69CE772A41995300CA46FC /* swiftgen.yml */; };
 		AF69CE7A2A419DC200CA46FC /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69CE792A419DC200CA46FC /* Strings+Generated.swift */; };
+		AF69CE7D2A41A4C100CA46FC /* String+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69CE7C2A41A4C100CA46FC /* String+Extentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		AF69CE732A4197BB00CA46FC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AF69CE772A41995300CA46FC /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = swiftgen.yml; path = ../../../../swiftgen.yml; sourceTree = "<group>"; };
 		AF69CE792A419DC200CA46FC /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		AF69CE7C2A41A4C100CA46FC /* String+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extentions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 				91CFDC2B2A40596300B15ECC /* UIViewExtensions.swift */,
 				91CFDC2D2A405DAA00B15ECC /* UITableViewExtensions.swift */,
 				91CFDC3F2A40736800B15ECC /* DataRequestExtensions.swift */,
+				AF69CE7C2A41A4C100CA46FC /* String+Extentions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				91CFDC222A40583400B15ECC /* ThreadsViewController.swift in Sources */,
 				91CFDC3E2A40726B00B15ECC /* Provider.swift in Sources */,
 				91CFDC402A40736800B15ECC /* DataRequestExtensions.swift in Sources */,
+				AF69CE7D2A41A4C100CA46FC /* String+Extentions.swift in Sources */,
 				91CFDC2C2A40596300B15ECC /* UIViewExtensions.swift in Sources */,
 				91CFDC452A40789A00B15ECC /* ThreadsViewModel.swift in Sources */,
 				915D72032A40520D001D56D3 /* AppDelegate.swift in Sources */,
