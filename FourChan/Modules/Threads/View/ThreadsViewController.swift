@@ -8,12 +8,29 @@ class ThreadsViewController: UIViewController {
     private let store: ThreadsStore = .init()
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
+        setupBackground()
+        
         view.addSubview(contentView) { $0.edges.equalTo(view.safeAreaLayoutGuide) }
         super.viewDidLoad()
         
         subscribe()
         store.dispatch(.viewDidLoad)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection)
+        setupBackground()
+        
+    }
+    
+    func setupBackground() {
+        if traitCollection.userInterfaceStyle == .dark {
+            view.backgroundColor = .black
+        } else {
+            view.backgroundColor = .white
+        }
     }
     
     func showBoards(_ boards: [ThreadsViewModel.Board]) {
@@ -24,6 +41,10 @@ class ThreadsViewController: UIViewController {
             }
             alertController.addAction(action)
         }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(cancel)
         present(alertController, animated: true)
     }
     
