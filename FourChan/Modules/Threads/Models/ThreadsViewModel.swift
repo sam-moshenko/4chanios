@@ -5,7 +5,7 @@ struct ThreadsViewModel {
     var cells: [CellModel]
     
     enum Board: String, CaseIterable {
-        case a, v, mu, gd
+        case a, v, mu, gd, fit
         
         var description: String {
             "/\(rawValue)/"

@@ -23,10 +23,14 @@ class ThreadsCell: BaseTableViewCell {
     
     var descriptionLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        $0.numberOfLines = 2
         $0.numberOfLines = 7
     }
     
     var iconImageView: UIImageView = build {
+        $0.contentMode = .scaleToFill
+        $0.layer.cornerRadius = 4
+        $0.clipsToBounds = true
         $0.snp.makeConstraints { $0.size.equalTo(60) }
     }
     

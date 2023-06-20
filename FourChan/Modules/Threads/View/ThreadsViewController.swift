@@ -24,6 +24,12 @@ class ThreadsViewController: UIViewController {
             }
             alertController.addAction(action)
         }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { _ in
+            self.boardCancelButtonTapped()
+        }
+        alertController.addAction(cancelAction)
+        
         present(alertController, animated: true)
     }
     
@@ -51,5 +57,9 @@ extension ThreadsViewController: ThreadsViewDelegate {
     
     func didSelectItem(_ item: ThreadsViewModel.CellModel) {
         store.dispatch(.didSelectThread(item))
+    }
+    
+    func boardCancelButtonTapped() {
+        store.dispatch(.boardCancelButtonTapped)
     }
 }
