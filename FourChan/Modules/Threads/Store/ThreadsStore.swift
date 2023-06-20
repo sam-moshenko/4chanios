@@ -7,13 +7,15 @@ class ThreadsStore {
         case viewDidLoad,
              boardButtonTapped,
              boardDidChoose(ThreadsViewModel.Board),
-             didSelectThread(ThreadsViewModel.CellModel)
+             didSelectThread(ThreadsViewModel.CellModel),
+             didSelectComment(ThreadsViewModel.CellModel)
     }
     
     enum State {
         case initial(ThreadsViewModel),
              chooseBoard([ThreadsViewModel.Board]),
-             openThread([ThreadsViewModel.CellModel])
+             openThread([ThreadsViewModel.CellModel]),
+             openComment(ThreadsViewModel.CellModel)
     }
     
     @Observable var state: State?
@@ -31,6 +33,8 @@ class ThreadsStore {
             getThreads(board: board)
         case .didSelectThread(let cellModel):
             state = .openThread(cached[cellModel.id]!)
+        case .didSelectComment(let cellModel):
+            state = .openComment(cellModel)
         }
     }
     
