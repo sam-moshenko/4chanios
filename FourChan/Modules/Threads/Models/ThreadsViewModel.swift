@@ -30,6 +30,8 @@ struct ThreadsViewModel {
         var title: String?
         var description: String?
         var imageUrl: URL?
+        var creationDate: Date?
+        var username: String?
         
         init?(data: ThreadResponse.Post, board: String) {
             if data.sub == nil && data.com == nil && data.tim == nil { return nil }
@@ -39,6 +41,19 @@ struct ThreadsViewModel {
             if let tim = data.tim, let ext = data.ext {
                 imageUrl = URL(string: "https://i.4cdn.org/\(board)/\(tim)\(ext)")!
             }
+            if let timestamp = data.time {
+                creationDate = Date(timeIntervalSince1970: TimeInterval(timestamp))
+            }
+            username = data.name
+        }
+        func formattedCreationDate() -> String? {
+            guard let creationDate = creationDate else {
+                return nil
+            }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+            return "Сегодня \(dateFormatter.string(from: creationDate))"
         }
     }
 }
