@@ -10,6 +10,21 @@ struct ThreadsViewModel {
         var description: String {
             "/\(rawValue)/"
         }
+        
+        var title: String {
+            switch self {
+            case .a:
+                return "Anime & Manga"
+            case .v:
+                return "Anime & Manga"
+            case .mu:
+                return "Anime & Manga"
+            case .gd:
+                return "Anime & Manga"
+            case .fit:
+                return "Fit"
+            }
+        }
     }
     
     struct CellModel {

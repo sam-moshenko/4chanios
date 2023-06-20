@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  FourChan
+
+  Created by Yeldos Marat on 20.06.2023.
+  
+*/
+"chooseBoard" = "Choose board";
+"animeMange" = "Anime & Mange";
+"animeMange" = "Fit";
+"cancelButton" = "Cancel";
