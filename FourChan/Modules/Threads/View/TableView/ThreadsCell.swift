@@ -19,6 +19,7 @@ class ThreadsCell: BaseTableViewCell {
     
     var titleLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        $0.numberOfLines = 2
     }
     
     var descriptionLabel: UILabel = build {
