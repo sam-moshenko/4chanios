@@ -31,7 +31,7 @@ class ThreadsCell: BaseTableViewCell {
     }
     
     override func setup() {
-        contentView.addSubview(horizontalStackView) { $0.edges.equalToSuperview().inset(4) }
+        contentView.addSubview(horizontalStackView) { $0.edges.equalToSuperview().inset(0) }
     }
     
     func configure(_ model: ThreadsViewModel.CellModel) {
