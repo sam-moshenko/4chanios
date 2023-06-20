@@ -60,10 +60,23 @@ class ThreadsCell: BaseTableViewCell {
     
     func configure(_ model: ThreadsViewModel.CellModel) {
         titleLabel.text = model.title
-        descriptionLabel.text = model.description
+        descriptionLabel.text = convertHTMLToPlainText(model.description ?? "")
         iconImageView.isHidden = model.imageUrl == nil
         ownerLabel.text = model.postOwner
         postDateLabel.text = model.postDate
         iconImageView.kf.setImage(with: model.imageUrl)
+    }
+    
+    private func convertHTMLToPlainText(_ htmlString: String) -> String {
+        guard let data = htmlString.data(using: .utf8) else { return "" }
+        
+        if let attributedString = try? NSAttributedString(data: data,
+                                                          options: [.documentType: NSAttributedString.DocumentType.html],
+                                                          documentAttributes: nil) {
+            return attributedString.string
+        } else {
+            return ""
+        }
+        
     }
 }
