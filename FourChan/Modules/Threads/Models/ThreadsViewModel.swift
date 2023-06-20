@@ -5,10 +5,21 @@ struct ThreadsViewModel {
     var cells: [CellModel]
     
     enum Board: String, CaseIterable {
-        case a, v, mu, gd
+        case a, v, mu, gd, fit
         
         var description: String {
-            "/\(rawValue)/"
+            switch self {
+            case .a:
+                return "Anime & Manga"
+            case .v:
+                return "Video Games"
+            case .mu:
+                return "Music"
+            case .gd:
+                return "Graphic design"
+            case .fit:
+                return "Fitness"
+            }
         }
     }
     
@@ -25,6 +36,7 @@ struct ThreadsViewModel {
             description = data.com
             if let tim = data.tim, let ext = data.ext {
                 imageUrl = URL(string: "https://i.4cdn.org/\(board)/\(tim)\(ext)")!
+                
             }
         }
     }

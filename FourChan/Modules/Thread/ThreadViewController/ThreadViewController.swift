@@ -20,4 +20,18 @@ class ThreadViewController: UITableViewController {
         
         super.viewDidLoad()
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ThreadsCell,
+              let imageUrl = cell.imageUrl else {
+            return
+        }
+        
+        let imageViewController = ImageViewController()
+        imageViewController.imageUrl = imageUrl
+        imageViewController.modalPresentationStyle = .automatic
+        present(imageViewController, animated: true)
+    }
+
+    
 }
