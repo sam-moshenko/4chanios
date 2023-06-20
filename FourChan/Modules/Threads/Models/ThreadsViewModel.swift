@@ -8,7 +8,13 @@ struct ThreadsViewModel {
         case a, v, mu, gd, fit
         
         var description: String {
-            "/\(rawValue)/"
+            switch self {
+            case .a: return "/\(rawValue)/ - Anime & Manga"
+            case .fit: return "/\(rawValue)/ - Fitness"
+            case .gd: return "/\(rawValue)/ - Graphic Design"
+            case .mu: return "/\(rawValue)/ - Music"
+            case .v: return "/\(rawValue)/ - Video Games"
+            }
         }
     }
     
