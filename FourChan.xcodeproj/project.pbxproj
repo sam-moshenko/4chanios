@@ -38,9 +38,9 @@
 		91CFDC432A40743500B15ECC /* ThreadsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CFDC422A40743500B15ECC /* ThreadsProvider.swift */; };
 		91CFDC452A40789A00B15ECC /* ThreadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CFDC442A40789A00B15ECC /* ThreadsViewModel.swift */; };
 		AF69CE702A4197B100CA46FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF69CE722A4197B100CA46FC /* Localizable.strings */; };
-		AF69CE782A41995300CA46FC /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF69CE772A41995300CA46FC /* swiftgen.yml */; };
 		AF69CE7A2A419DC200CA46FC /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69CE792A419DC200CA46FC /* Strings+Generated.swift */; };
 		AF69CE7D2A41A4C100CA46FC /* String+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69CE7C2A41A4C100CA46FC /* String+Extentions.swift */; };
+		AF69CE7F2A41E0EA00CA46FC /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF69CE772A41995300CA46FC /* swiftgen.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -447,10 +447,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF69CE7F2A41E0EA00CA46FC /* swiftgen.yml in Resources */,
 				915D720F2A40520D001D56D3 /* LaunchScreen.storyboard in Resources */,
 				AF69CE702A4197B100CA46FC /* Localizable.strings in Resources */,
 				915D720C2A40520D001D56D3 /* Assets.xcassets in Resources */,
-				AF69CE782A41995300CA46FC /* swiftgen.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
