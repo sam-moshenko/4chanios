@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  FourChan
+
+  Created by Ernar Khasen on 20.06.2023.
+  
+*/
+
+"chooseBoard" = "Выберите Доску";
+"a" = "/a/ - Аниме & Манга";
+"v" = "/v/ - Видео Игры";
+"mu" = "/mu/ - Музыка";
+"gd" = "/gd/ - Графический Дизайн";
+"fit" = "/fit/ - Фитнес";
+"cancel" = "Отмена";

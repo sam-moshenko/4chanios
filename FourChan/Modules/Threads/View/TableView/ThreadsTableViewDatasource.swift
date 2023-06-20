@@ -2,7 +2,7 @@ import UIKit
 
 class ThreadsTableViewDatasource: NSObject, UITableViewDataSource, UITableViewDelegate {
     var items: [ThreadsViewModel.CellModel] = []
-    
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         items.count
     }
@@ -13,4 +13,9 @@ class ThreadsTableViewDatasource: NSObject, UITableViewDataSource, UITableViewDe
         cell.configure(item)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+    }
 }
+
