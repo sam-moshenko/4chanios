@@ -11,6 +11,11 @@ class ThreadsTableViewDatasource: NSObject, UITableViewDataSource, UITableViewDe
         let item = items[indexPath.row]
         let cell: ThreadsCell = tableView.dequeueReusableCell(for: indexPath)
         cell.configure(item)
+        cell.iconDidTapped = { [weak self] model in
+//            self?.handleIconDidTapped(model: model)
+//            this func in ThreadsViewController
+        }
+        cell.setAction()
         return cell
     }
 }
