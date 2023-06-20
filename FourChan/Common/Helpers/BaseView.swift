@@ -2,12 +2,12 @@ import UIKit
 
 public class BaseView: UIView {
     public init() {
-        super.init(frame: .zero)
+        super.init(frame: .infinite)
         setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
+        super.init(coder: aDecoder)
         setup()
     }
     
@@ -16,7 +16,8 @@ public class BaseView: UIView {
         setup()
     }
     
-    func setup() {}
+    func setup() {
+    }
 }
 
 public class BaseTableViewCell: UITableViewCell {
@@ -30,7 +31,8 @@ public class BaseTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup() {}
+    func setup() {
+    }
 }
 
 public class BaseCollectionViewCell: UICollectionViewCell {
@@ -46,3 +48,4 @@ public class BaseCollectionViewCell: UICollectionViewCell {
     
     func setup() {}
 }
+
