@@ -4,16 +4,13 @@ class ThreadsTableViewDatasource: NSObject, UITableViewDataSource, UITableViewDe
     weak var viewController: UIViewController?
     
     func threadsCellDidTapImage(_ cell: ThreadsCell, imageUrl: URL) {
-        print("qwe")
         let imageViewController = ImageViewController(imageUrl: imageUrl)
         let navController = UINavigationController(rootViewController: imageViewController)
         navController.modalPresentationStyle = .formSheet // Set the desired presentation style
         
         if let viewController = viewController {
             viewController.present(navController, animated: true, completion: nil)
-        } else {
-            print("View controller is not set")
-        }
+        } else { }
     }
     
     var items: [ThreadsViewModel.CellModel] = []
