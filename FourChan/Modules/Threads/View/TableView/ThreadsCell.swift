@@ -7,6 +7,7 @@ class ThreadsCell: BaseTableViewCell {
         $0.spacing = 4
         $0.addArrangedSubview(iconImageView)
         $0.addArrangedSubview(verticalStackView)
+        $0.addArrangedSubview(postInfoStackView)
     }
     
     lazy var verticalStackView: UIStackView = build {
@@ -20,6 +21,24 @@ class ThreadsCell: BaseTableViewCell {
     var titleLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         $0.numberOfLines = 2
+    }
+    
+    lazy var postInfoStackView: UIStackView = build {
+        $0.axis = .vertical
+        $0.alignment = .trailing
+        $0.spacing = 4
+        $0.addArrangedSubview(ownerLabel)
+        $0.addArrangedSubview(postDateLabel)
+    }
+    
+    var ownerLabel: UILabel = build {
+        $0.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+        $0.numberOfLines = 0
+    }
+    
+    var postDateLabel: UILabel = build {
+        $0.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+        $0.numberOfLines = 0
     }
     
     var descriptionLabel: UILabel = build {
@@ -43,6 +62,8 @@ class ThreadsCell: BaseTableViewCell {
         titleLabel.text = model.title
         descriptionLabel.text = model.description
         iconImageView.isHidden = model.imageUrl == nil
+        ownerLabel.text = model.postOwner
+        postDateLabel.text = model.postDate
         iconImageView.kf.setImage(with: model.imageUrl)
     }
 }
