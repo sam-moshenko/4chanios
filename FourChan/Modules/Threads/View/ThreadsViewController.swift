@@ -2,13 +2,15 @@ import UIKit
 import SnapKit
 
 class ThreadsViewController: UIViewController {
+    weak var viewController: UIViewController?
     lazy var contentView: ThreadsView = build {
         $0.delegate = self
     }
     private let store: ThreadsStore = .init()
     
+    
     override func viewDidLoad() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(contentView) { $0.edges.equalTo(view.safeAreaLayoutGuide) }
         super.viewDidLoad()
         
@@ -24,6 +26,9 @@ class ThreadsViewController: UIViewController {
             }
             alertController.addAction(action)
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
         present(alertController, animated: true)
     }
     
