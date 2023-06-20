@@ -8,12 +8,24 @@ class ThreadsViewController: UIViewController {
     private let store: ThreadsStore = .init()
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
         view.addSubview(contentView) { $0.edges.equalTo(view.safeAreaLayoutGuide) }
         super.viewDidLoad()
         
         subscribe()
         store.dispatch(.viewDidLoad)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateBackgroundColor()
+        }
+    }
+    
+    private func updateBackgroundColor() {
+        let isDarkMode = traitCollection.userInterfaceStyle == .dark
+        view.backgroundColor = isDarkMode ? .black : .white
     }
     
     func showBoards(_ boards: [ThreadsViewModel.Board]) {
