@@ -24,6 +24,8 @@ class ThreadsViewController: UIViewController {
             }
             alertController.addAction(action)
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
         present(alertController, animated: true)
     }
     
