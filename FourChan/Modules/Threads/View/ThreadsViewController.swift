@@ -8,7 +8,7 @@ class ThreadsViewController: UIViewController {
     private let store: ThreadsStore = .init()
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(contentView) { $0.edges.equalTo(view.safeAreaLayoutGuide) }
         super.viewDidLoad()
         
@@ -20,10 +20,13 @@ class ThreadsViewController: UIViewController {
         let alertController = UIAlertController(title: "Choose board", message: nil, preferredStyle: .alert)
         boards.forEach { board in
             let action = UIAlertAction(title: board.description, style: .default) { _ in
+                
                 self.store.dispatch(.boardDidChoose(board))
             }
             alertController.addAction(action)
         }
+        let cancel = UIAlertAction(title: "Cancel", style: .default)
+        alertController.addAction(cancel)
         present(alertController, animated: true)
     }
     

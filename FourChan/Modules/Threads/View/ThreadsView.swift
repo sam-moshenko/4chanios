@@ -35,7 +35,7 @@ class ThreadsView: BaseView {
     func configure(_ viewModel: ThreadsViewModel) {
         dataSource.items = viewModel.cells
         tableView.reloadData()
-        boardButton.setTitle(viewModel.board.description, for: .normal)
+        boardButton.setTitle(viewModel.board.title, for: .normal)
     }
     
     @objc

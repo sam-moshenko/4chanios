@@ -14,6 +14,8 @@ struct ThreadResponse: Decodable {
     
     struct Post: Decodable {
         let no: Int
+        let time: Int
+        let name: String
         let sub: String?
         let com: String?
         let tim: Int?
