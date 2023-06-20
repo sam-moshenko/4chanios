@@ -29,14 +29,14 @@ class ThreadsViewController: UIViewController {
     }
     
     func showBoards(_ boards: [ThreadsViewModel.Board]) {
-        let alertController = UIAlertController(title: "Choose board", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("CHOOSE", comment: "choose board"), message: nil, preferredStyle: .alert)
         boards.forEach { board in
             let action = UIAlertAction(title: board.description, style: .default) { _ in
                 self.store.dispatch(.boardDidChoose(board))
             }
             alertController.addAction(action)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "cancel board"), style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
     }

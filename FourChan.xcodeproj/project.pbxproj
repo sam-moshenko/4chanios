@@ -37,6 +37,8 @@
 		91CFDC402A40736800B15ECC /* DataRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CFDC3F2A40736800B15ECC /* DataRequestExtensions.swift */; };
 		91CFDC432A40743500B15ECC /* ThreadsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CFDC422A40743500B15ECC /* ThreadsProvider.swift */; };
 		91CFDC452A40789A00B15ECC /* ThreadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CFDC442A40789A00B15ECC /* ThreadsViewModel.swift */; };
+		FA4882BC2A418E2A003983BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA4882BB2A418E2A003983BF /* Localizable.strings */; };
+		FA4882BE2A418F1D003983BF /* Localizable (English).strings in Resources */ = {isa = PBXBuildFile; fileRef = FA4882BD2A418F1D003983BF /* Localizable (English).strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		91CFDC3F2A40736800B15ECC /* DataRequestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequestExtensions.swift; sourceTree = "<group>"; };
 		91CFDC422A40743500B15ECC /* ThreadsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadsProvider.swift; sourceTree = "<group>"; };
 		91CFDC442A40789A00B15ECC /* ThreadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadsViewModel.swift; sourceTree = "<group>"; };
+		FA4882BB2A418E2A003983BF /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		FA4882BD2A418F1D003983BF /* Localizable (English).strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = "Localizable (English).strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,8 @@
 				915D720B2A40520D001D56D3 /* Assets.xcassets */,
 				915D720D2A40520D001D56D3 /* LaunchScreen.storyboard */,
 				915D72102A40520D001D56D3 /* Info.plist */,
+				FA4882BB2A418E2A003983BF /* Localizable.strings */,
+				FA4882BD2A418F1D003983BF /* Localizable (English).strings */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -425,6 +431,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				915D720F2A40520D001D56D3 /* LaunchScreen.storyboard in Resources */,
+				FA4882BC2A418E2A003983BF /* Localizable.strings in Resources */,
+				FA4882BE2A418F1D003983BF /* Localizable (English).strings in Resources */,
 				915D720C2A40520D001D56D3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
