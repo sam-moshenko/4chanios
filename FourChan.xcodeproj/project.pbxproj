@@ -39,6 +39,7 @@
 		91CFDC452A40789A00B15ECC /* ThreadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CFDC442A40789A00B15ECC /* ThreadsViewModel.swift */; };
 		AF406E572A42D8EF006A9E07 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF406E562A42D8EF006A9E07 /* swiftgen.yml */; };
 		AF406E592A42D9AB006A9E07 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF406E582A42D9AB006A9E07 /* Strings+Generated.swift */; };
+		AF406E5F2A42E380006A9E07 /* Data+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF406E5E2A42E380006A9E07 /* Data+Extentions.swift */; };
 		AF69CE702A4197B100CA46FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF69CE722A4197B100CA46FC /* Localizable.strings */; };
 		AF69CE7D2A41A4C100CA46FC /* String+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69CE7C2A41A4C100CA46FC /* String+Extentions.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,7 @@
 		91CFDC442A40789A00B15ECC /* ThreadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadsViewModel.swift; sourceTree = "<group>"; };
 		AF406E562A42D8EF006A9E07 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
 		AF406E582A42D9AB006A9E07 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		AF406E5E2A42E380006A9E07 /* Data+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extentions.swift"; sourceTree = "<group>"; };
 		AF69CE712A4197B100CA46FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AF69CE732A4197BB00CA46FC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AF69CE7C2A41A4C100CA46FC /* String+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extentions.swift"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				91CFDC2D2A405DAA00B15ECC /* UITableViewExtensions.swift */,
 				91CFDC3F2A40736800B15ECC /* DataRequestExtensions.swift */,
 				AF69CE7C2A41A4C100CA46FC /* String+Extentions.swift */,
+				AF406E5E2A42E380006A9E07 /* Data+Extentions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				91CFDC392A4070EB00B15ECC /* ThreadsStore.swift in Sources */,
 				915D72052A40520D001D56D3 /* SceneDelegate.swift in Sources */,
 				91CFDC332A406A0500B15ECC /* ThreadsTableViewDatasource.swift in Sources */,
+				AF406E5F2A42E380006A9E07 /* Data+Extentions.swift in Sources */,
 				91CFDC292A4058D000B15ECC /* Builder.swift in Sources */,
 				91CFDC2E2A405DAA00B15ECC /* UITableViewExtensions.swift in Sources */,
 				91CFDC302A405EE100B15ECC /* ThreadsCell.swift in Sources */,
@@ -674,6 +678,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R2D7Z9B9A5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FourChan/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -685,7 +690,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kz.kcell.FourChan.FourChan;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.kcell.FourChan.FourChandd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -700,6 +705,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R2D7Z9B9A5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FourChan/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -711,7 +717,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kz.kcell.FourChan.FourChan;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.kcell.FourChan.FourChandd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -21,6 +21,12 @@ internal enum S {
   internal static let chooseBoard = S.tr("Localizable", "chooseBoard", fallback: "Choose board")
   /// Fit
   internal static let fit = S.tr("Localizable", "fit", fallback: "Fit")
+  /// on
+  internal static let on = S.tr("Localizable", "on", fallback: "on")
+  /// today at
+  internal static let todayAt = S.tr("Localizable", "todayAt", fallback: "today at")
+  /// yesterday at
+  internal static let yesterday = S.tr("Localizable", "yesterday", fallback: "yesterday at")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

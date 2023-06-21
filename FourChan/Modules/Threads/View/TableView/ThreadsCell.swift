@@ -7,18 +7,25 @@ class ThreadsCell: BaseTableViewCell {
         $0.spacing = 4
         $0.addArrangedSubview(iconImageView)
         $0.addArrangedSubview(verticalStackView)
-        $0.addArrangedSubview(authorHorizontalStackView)
     }
     
     lazy var verticalStackView: UIStackView = build {
         $0.axis = .vertical
         $0.alignment = .leading
         $0.spacing = 4
-        $0.addArrangedSubview(titleLabel)
+        $0.addArrangedSubview(titleAndPublishInfoStackView)
         $0.addArrangedSubview(descriptionLabel)
     }
     
-    lazy var authorHorizontalStackView: UIStackView = build {
+    lazy var titleAndPublishInfoStackView: UIStackView = build {
+        $0.axis = .horizontal
+        $0.alignment = .top
+        $0.spacing = 5
+        $0.addArrangedSubview(titleLabel)
+        $0.addArrangedSubview(authorVerticalStackView)
+    }
+    
+    lazy var authorVerticalStackView: UIStackView = build {
         $0.axis = .vertical
         $0.spacing = 4
         $0.addArrangedSubview(auhtorLabel)
@@ -27,11 +34,13 @@ class ThreadsCell: BaseTableViewCell {
     
     var titleLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        $0.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        $0.numberOfLines = 2
     }
     
     var descriptionLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        $0.numberOfLines = 2
     }
     
     var iconImageView: UIImageView = build {
@@ -42,11 +51,11 @@ class ThreadsCell: BaseTableViewCell {
     }
     
     var auhtorLabel: UILabel = build {
-        $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        $0.font = UIFont.systemFont(ofSize: 13)
     }
     
     var publishDateLabel: UILabel = build {
-        $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        $0.font = UIFont.systemFont(ofSize: 13)
     }
     
     override func setup() {
@@ -66,7 +75,11 @@ class ThreadsCell: BaseTableViewCell {
         
         if let author = model.author, let publishData = model.publishData {
             auhtorLabel.text = author
-            publishDateLabel.text = publishData
+            if let date = Date.fromCustomString(publishData) {
+                publishDateLabel.text = date.relativeDateString
+            } else {
+                publishDateLabel.text = "Invalid date"
+            }
         }
     }
 }

@@ -10,3 +10,6 @@
 "animeMange" = "Аниме & Манга";
 "fit" = "В форме";
 "cancelButton" = "Отмена";
+"todayAt" = "сегодня в";
+"yesterday" = "вчера в";
+"on" = "в";
