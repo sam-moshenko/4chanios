@@ -8,7 +8,7 @@ class ThreadsViewController: UIViewController {
     private let store: ThreadsStore = .init()
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(contentView) { $0.edges.equalTo(view.safeAreaLayoutGuide) }
         super.viewDidLoad()
         
@@ -17,13 +17,19 @@ class ThreadsViewController: UIViewController {
     }
     
     func showBoards(_ boards: [ThreadsViewModel.Board]) {
-        let alertController = UIAlertController(title: "Choose board", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: S.chooseBoard, message: nil, preferredStyle: .alert)
         boards.forEach { board in
-            let action = UIAlertAction(title: board.description, style: .default) { _ in
+            let action = UIAlertAction(title: board.description + board.title, style: .default) { _ in
                 self.store.dispatch(.boardDidChoose(board))
             }
             alertController.addAction(action)
         }
+        
+        let cancelAction = UIAlertAction(title: S.cancelButton, style: .destructive) { _ in
+            self.boardCancelButtonTapped()
+        }
+        alertController.addAction(cancelAction)
+        
         present(alertController, animated: true)
     }
     
@@ -51,5 +57,9 @@ extension ThreadsViewController: ThreadsViewDelegate {
     
     func didSelectItem(_ item: ThreadsViewModel.CellModel) {
         store.dispatch(.didSelectThread(item))
+    }
+    
+    func boardCancelButtonTapped() {
+        store.dispatch(.boardCancelButtonTapped)
     }
 }

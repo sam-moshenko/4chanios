@@ -3,6 +3,7 @@ import SnapKit
 
 protocol ThreadsViewDelegate: AnyObject {
     func boardButtonTapped()
+    func boardCancelButtonTapped()
     func didSelectItem(_ item: ThreadsViewModel.CellModel)
 }
 

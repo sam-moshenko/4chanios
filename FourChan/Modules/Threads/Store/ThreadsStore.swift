@@ -7,7 +7,8 @@ class ThreadsStore {
         case viewDidLoad,
              boardButtonTapped,
              boardDidChoose(ThreadsViewModel.Board),
-             didSelectThread(ThreadsViewModel.CellModel)
+             didSelectThread(ThreadsViewModel.CellModel),
+             boardCancelButtonTapped
     }
     
     enum State {
@@ -31,10 +32,13 @@ class ThreadsStore {
             getThreads(board: board)
         case .didSelectThread(let cellModel):
             state = .openThread(cached[cellModel.id]!)
+        case .boardCancelButtonTapped:
+            print("dismissed")
         }
     }
     
     private func getThreads(board: ThreadsViewModel.Board) {
+//        state = .loading
         provider.getThreads(board.rawValue).then {
             $0.compactMap {
                 let cellModels = $0.posts.compactMap {
