@@ -10,8 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum S {
-  /// Fit
-  internal static let animeMange = S.tr("Localizable", "animeMange", fallback: "Fit")
+  /// Anime & Mange
+  internal static let animeMange = S.tr("Localizable", "animeMange", fallback: "Anime & Mange")
   /// Cancel
   internal static let cancelButton = S.tr("Localizable", "cancelButton", fallback: "Cancel")
   /// Localizable.strings
@@ -19,6 +19,8 @@ internal enum S {
   /// 
   ///   Created by Yeldos Marat on 20.06.2023.
   internal static let chooseBoard = S.tr("Localizable", "chooseBoard", fallback: "Choose board")
+  /// Fit
+  internal static let fit = S.tr("Localizable", "fit", fallback: "Fit")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

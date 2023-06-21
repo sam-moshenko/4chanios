@@ -14,15 +14,15 @@ struct ThreadsViewModel {
         var title: String {
             switch self {
             case .a:
-                return "Anime & Manga"
+                return S.animeMange
             case .v:
-                return "Anime & Manga"
+                return S.animeMange
             case .mu:
-                return "Anime & Manga"
+                return S.animeMange
             case .gd:
-                return "Anime & Manga"
+                return S.animeMange
             case .fit:
-                return "Fit"
+                return S.fit
             }
         }
     }

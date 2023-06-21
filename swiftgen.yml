@@ -19,11 +19,11 @@
 
 strings:
   inputs:
-        - 4chanios/FourChan/Common/Support/en.lproj/
+        - FourChan/Common/Support/en.lproj/
   outputs:
     templateName: structured-swift5
     output:
-                4chanios/FourChan/SwiftGen/Strings+Generated.swift
+         FourChan/SwiftGen/Strings+Generated.swift
     params:
         enumName: S
 
