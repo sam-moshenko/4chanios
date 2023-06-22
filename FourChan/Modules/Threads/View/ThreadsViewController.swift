@@ -8,11 +8,7 @@ class ThreadsViewController: UIViewController {
     private let store: ThreadsStore = .init()
     
     override func viewDidLoad() {
-        if traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = .black
-        } else {
-            view.backgroundColor = .white
-        }
+        view.backgroundColor = .white
         view.addSubview(contentView) { $0.edges.equalTo(view.safeAreaLayoutGuide) }
         super.viewDidLoad()
         

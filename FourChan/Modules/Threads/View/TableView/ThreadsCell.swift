@@ -28,14 +28,7 @@ class ThreadsCell: BaseTableViewCell {
     }
     
     var iconImageView: UIImageView = build {
-        $0.snp.makeConstraints {
-            make in
-            make.width.equalTo(60)
-            make.height.equalTo(60)
-        }
-        $0.layer.cornerRadius = 4
-        $0.clipsToBounds = true
-        $0.contentMode = .scaleAspectFill
+        $0.snp.makeConstraints { $0.size.equalTo(60) }
     }
     
     override func setup() {
@@ -43,42 +36,9 @@ class ThreadsCell: BaseTableViewCell {
     }
     
     func configure(_ model: ThreadsViewModel.CellModel) {
-        if let title = model.title, let formattedDate = model.formattedCreationDate(), let username = model.username {
-            let combinedString = "\(title) - \(formattedDate) - \(username)"
-            let attributedString = NSMutableAttributedString(string: combinedString)
-            
-            let titleRange = (combinedString as NSString).range(of: title)
-            let titleAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 16, weight: .bold)
-            ]
-            attributedString.addAttributes(titleAttributes, range: titleRange)
-            
-            let usernameRange = (combinedString as NSString).range(of: username)
-            let usernameAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 12, weight: .regular)
-            ]
-            attributedString.addAttributes(usernameAttributes, range: usernameRange)
-            let formattedDateRange = (combinedString as NSString).range(of: formattedDate)
-            let formattedDateAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 12, weight: .regular),
-                .foregroundColor: UIColor.gray // Adjust the color as desired
-            ]
-            attributedString.addAttributes(formattedDateAttributes, range: formattedDateRange)
-            
-            titleLabel.attributedText = attributedString
-            
-            
-        } else {
-            titleLabel.text = model.title
-        }
+        titleLabel.text = model.title
         descriptionLabel.text = model.description
         iconImageView.isHidden = model.imageUrl == nil
         iconImageView.kf.setImage(with: model.imageUrl)
-        
-        if model.username != nil && model.formattedCreationDate() != nil {
-            horizontalStackView.axis = .horizontal
-        } else {
-            horizontalStackView.axis = .vertical
-        }
     }
 }
