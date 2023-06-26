@@ -5,12 +5,15 @@ struct ThreadsViewModel {
     var cells: [CellModel]
     
     enum Board: String, CaseIterable {
-        case a, v, mu, gd
+        //Добавить новую доску, например /fit/
+        case a, v, mu, gd, fit
+        
         
         var description: String {
             "/\(rawValue)/"
         }
     }
+    
     
     struct CellModel {
         var id: Int

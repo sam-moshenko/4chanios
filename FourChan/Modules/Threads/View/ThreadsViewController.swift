@@ -14,6 +14,8 @@ class ThreadsViewController: UIViewController {
         
         subscribe()
         store.dispatch(.viewDidLoad)
+        
+        
     }
     
     func showBoards(_ boards: [ThreadsViewModel.Board]) {
@@ -24,6 +26,9 @@ class ThreadsViewController: UIViewController {
             }
             alertController.addAction(action)
         }
+        // Добавить кнопку отмены в выборе досок
+        let buttonCancel = UIAlertAction(title: "Отмена", style: .cancel)
+        alertController.addAction(buttonCancel)
         present(alertController, animated: true)
     }
     
@@ -53,3 +58,5 @@ extension ThreadsViewController: ThreadsViewDelegate {
         store.dispatch(.didSelectThread(item))
     }
 }
+
+

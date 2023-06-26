@@ -36,8 +36,15 @@ class ThreadsCell: BaseTableViewCell {
     
     func configure(_ model: ThreadsViewModel.CellModel) {
         titleLabel.text = model.title
+        // Ограничить заголовок поста в 2 строки
+        titleLabel.numberOfLines = 2
         descriptionLabel.text = model.description
         iconImageView.isHidden = model.imageUrl == nil
         iconImageView.kf.setImage(with: model.imageUrl)
+        // Сейчас картинки отображаются квадратными не взирая на пропорции картинки. Нужно учесть пропорции картинки заполняя картинкой доступный квадрат
+        iconImageView.contentMode = .scaleToFill
+        // Округлить границы картинки с радиусом в 4 единицы
+        iconImageView.layer.cornerRadius = 4
+        iconImageView.clipsToBounds = true
     }
 }
