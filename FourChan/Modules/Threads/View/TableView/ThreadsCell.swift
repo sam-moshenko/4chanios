@@ -2,6 +2,21 @@ import UIKit
 import Kingfisher
 
 class ThreadsCell: BaseTableViewCell {
+//    lazy var horizontalStackView: UIStackView = build {
+//        $0.alignment = .top
+//        $0.spacing = 4
+//        $0.addArrangedSubview(iconImageView)
+//        $0.addArrangedSubview(verticalStackView)
+//    }
+//
+//    lazy var verticalStackView: UIStackView = build {
+//        $0.axis = .vertical
+//        $0.alignment = .leading
+//        $0.spacing = 4
+//        $0.addArrangedSubview(titleLabel)
+//        $0.addArrangedSubview(descriptionLabel)
+//    }
+    
     lazy var horizontalStackView: UIStackView = build {
         $0.alignment = .top
         $0.spacing = 4
@@ -11,14 +26,52 @@ class ThreadsCell: BaseTableViewCell {
     
     lazy var verticalStackView: UIStackView = build {
         $0.axis = .vertical
-        $0.alignment = .leading
+        $0.alignment = .top
         $0.spacing = 4
-        $0.addArrangedSubview(titleLabel)
+        $0.addArrangedSubview(horizontalStackViewHead)
+        $0.addArrangedSubview(horizontalStackViewDescription)
+    }
+    
+    lazy var horizontalStackViewDescription: UIStackView = build {
+        $0.axis = .horizontal
+        $0.alignment = .top
+        $0.spacing = 4
         $0.addArrangedSubview(descriptionLabel)
     }
+
+    
+    lazy var horizontalStackViewHead: UIStackView = build {
+        $0.axis = .horizontal
+        $0.alignment = .top
+        $0.spacing = 4
+        $0.addArrangedSubview(verticalStackViewTitle)
+        $0.addArrangedSubview(verticalStackViewAuthorAndDate)
+
+    }
+        
+    lazy var verticalStackViewTitle: UIStackView = build {
+        $0.axis = .vertical
+        $0.alignment = .top
+        $0.spacing = 4
+        $0.addArrangedSubview(titleLabel)
+    }
+    
+    lazy var verticalStackViewAuthorAndDate: UIStackView = build {
+        $0.axis = .vertical
+        $0.alignment = .top
+        $0.spacing = 4
+        $0.addArrangedSubview(authorLabel)
+        $0.addArrangedSubview(dateLabel)
+    }
+    
+    
+    
+    
+    
     
     var titleLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        $0.numberOfLines = 2
     }
     
     var descriptionLabel: UILabel = build {
@@ -28,6 +81,19 @@ class ThreadsCell: BaseTableViewCell {
     
     var iconImageView: UIImageView = build {
         $0.snp.makeConstraints { $0.size.equalTo(60) }
+        $0.contentMode = .scaleToFill
+        $0.layer.cornerRadius = 4
+        $0.clipsToBounds = true
+    }
+    
+    //
+    var authorLabel: UILabel = build {
+        $0.font = UIFont.systemFont(ofSize: 9, weight: .bold)
+        $0.numberOfLines = 1
+    }
+    var dateLabel: UILabel = build {
+        $0.font = UIFont.systemFont(ofSize: 9, weight: .bold)
+        $0.numberOfLines = 1
     }
     
     override func setup() {
@@ -36,15 +102,11 @@ class ThreadsCell: BaseTableViewCell {
     
     func configure(_ model: ThreadsViewModel.CellModel) {
         titleLabel.text = model.title
-        // Ограничить заголовок поста в 2 строки
-        titleLabel.numberOfLines = 2
         descriptionLabel.text = model.description
+        //
+        authorLabel.text = model.author
+        dateLabel.text = model.date
         iconImageView.isHidden = model.imageUrl == nil
         iconImageView.kf.setImage(with: model.imageUrl)
-        // Сейчас картинки отображаются квадратными не взирая на пропорции картинки. Нужно учесть пропорции картинки заполняя картинкой доступный квадрат
-        iconImageView.contentMode = .scaleToFill
-        // Округлить границы картинки с радиусом в 4 единицы
-        iconImageView.layer.cornerRadius = 4
-        iconImageView.clipsToBounds = true
     }
 }

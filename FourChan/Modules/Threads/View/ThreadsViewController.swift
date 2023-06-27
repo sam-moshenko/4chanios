@@ -8,7 +8,8 @@ class ThreadsViewController: UIViewController {
     private let store: ThreadsStore = .init()
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
+        //При переходе в темный режим виден белый фон, исправить чтобы в темном режиме фон становился черным
+        view.backgroundColor = .systemBackground
         view.addSubview(contentView) { $0.edges.equalTo(view.safeAreaLayoutGuide) }
         super.viewDidLoad()
         
@@ -19,7 +20,8 @@ class ThreadsViewController: UIViewController {
     }
     
     func showBoards(_ boards: [ThreadsViewModel.Board]) {
-        let alertController = UIAlertController(title: "Choose board", message: nil, preferredStyle: .alert)
+        //Добавить локализацию
+        let alertController = UIAlertController(title: "Выберите доску", message: nil, preferredStyle: .alert)
         boards.forEach { board in
             let action = UIAlertAction(title: board.description, style: .default) { _ in
                 self.store.dispatch(.boardDidChoose(board))
