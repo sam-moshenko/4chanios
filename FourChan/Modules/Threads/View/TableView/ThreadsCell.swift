@@ -2,22 +2,9 @@ import UIKit
 import Kingfisher
 
 class ThreadsCell: BaseTableViewCell {
-//    lazy var horizontalStackView: UIStackView = build {
-//        $0.alignment = .top
-//        $0.spacing = 4
-//        $0.addArrangedSubview(iconImageView)
-//        $0.addArrangedSubview(verticalStackView)
-//    }
-//
-//    lazy var verticalStackView: UIStackView = build {
-//        $0.axis = .vertical
-//        $0.alignment = .leading
-//        $0.spacing = 4
-//        $0.addArrangedSubview(titleLabel)
-//        $0.addArrangedSubview(descriptionLabel)
-//    }
     
     lazy var horizontalStackView: UIStackView = build {
+        $0.axis = .horizontal
         $0.alignment = .top
         $0.spacing = 4
         $0.addArrangedSubview(iconImageView)
@@ -26,7 +13,7 @@ class ThreadsCell: BaseTableViewCell {
     
     lazy var verticalStackView: UIStackView = build {
         $0.axis = .vertical
-        $0.alignment = .top
+        $0.alignment = .leading
         $0.spacing = 4
         $0.addArrangedSubview(horizontalStackViewHead)
         $0.addArrangedSubview(horizontalStackViewDescription)
@@ -51,23 +38,18 @@ class ThreadsCell: BaseTableViewCell {
         
     lazy var verticalStackViewTitle: UIStackView = build {
         $0.axis = .vertical
-        $0.alignment = .top
+        $0.alignment = .leading
         $0.spacing = 4
         $0.addArrangedSubview(titleLabel)
     }
     
     lazy var verticalStackViewAuthorAndDate: UIStackView = build {
         $0.axis = .vertical
-        $0.alignment = .top
-        $0.spacing = 4
+        $0.alignment = .leading
+        
         $0.addArrangedSubview(authorLabel)
         $0.addArrangedSubview(dateLabel)
     }
-    
-    
-    
-    
-    
     
     var titleLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
@@ -86,14 +68,13 @@ class ThreadsCell: BaseTableViewCell {
         $0.clipsToBounds = true
     }
     
-    //
     var authorLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 9, weight: .bold)
         $0.numberOfLines = 1
     }
     var dateLabel: UILabel = build {
         $0.font = UIFont.systemFont(ofSize: 9, weight: .bold)
-        $0.numberOfLines = 1
+        $0.numberOfLines = 2
     }
     
     override func setup() {
@@ -103,7 +84,6 @@ class ThreadsCell: BaseTableViewCell {
     func configure(_ model: ThreadsViewModel.CellModel) {
         titleLabel.text = model.title
         descriptionLabel.text = model.description
-        //
         authorLabel.text = model.author
         dateLabel.text = model.date
         iconImageView.isHidden = model.imageUrl == nil

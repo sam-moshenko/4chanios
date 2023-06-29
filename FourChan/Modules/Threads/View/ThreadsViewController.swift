@@ -12,10 +12,8 @@ class ThreadsViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(contentView) { $0.edges.equalTo(view.safeAreaLayoutGuide) }
         super.viewDidLoad()
-        
         subscribe()
         store.dispatch(.viewDidLoad)
-        
         
     }
     
