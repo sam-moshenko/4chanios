@@ -25,10 +25,10 @@ struct ThreadResponse: Decodable {
 }
 
 struct Boards: Decodable {
-    var boards: [Board?]
+    var boards: [Board]
     
     struct Board: Decodable {
-        var board: String?
-        var title: String?
+        var board: String
+        var title: String
     }
 }

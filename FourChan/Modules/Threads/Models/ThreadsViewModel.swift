@@ -59,33 +59,21 @@ extension String {
 
 extension ThreadsViewModel.CellModel {
     func dateTransform(date: String) -> Date {
-        var dateChange = date
-        if date.contains("(") {
-            dateChange.insert(" ", at: dateChange.firstIndex(of: "(")! )
-            dateChange.removeSubrange(dateChange.firstIndex(of: "(")!...dateChange.firstIndex(of: ")")!)
-        }
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "MM/dd/yy HH:mm:ss"
-        dateFormater.timeZone = TimeZone(secondsFromGMT: 0)
-        let dateReturn = dateFormater.date(from: dateChange)
+        dateFormater.dateFormat = "MM/dd/yy(EEE)HH:mm:ss"
+        dateFormater.timeZone = .current
+        let dateReturn = dateFormater.date(from: date)
         return dateReturn!
     }
     
     func dayConfigure(date: Date) -> String {
         let currentDate = Date()
-        let calendar = Calendar.current
-        var timeComponents = calendar.dateComponents([.day, .month, .hour, .minute, .second], from: date)
-        timeComponents.timeZone = .current
-        let day = timeComponents.day ?? 0
-        let month = timeComponents.month ?? 0
-        let hour = timeComponents.hour ?? 0
-        let minute = timeComponents.minute ?? 0
+        let timeFormatter = RelativeDateTimeFormatter()
+        timeFormatter.locale = Locale(identifier: "ru-RU")
+        timeFormatter.dateTimeStyle = .numeric
+        timeFormatter.unitsStyle = .spellOut
+        return timeFormatter.localizedString(for: date, relativeTo: currentDate)
         
-        if calendar.dateComponents([.year, .month, .day], from: date) == calendar.dateComponents([.year, .month, .day], from: currentDate) {
-            return("Сегодня \(hour):\(minute)")
-        } else {
-            return("\(day).\(month) \(hour):\(minute)")
-        }
     }
     
     func dateConfigure (date: String) -> String {
