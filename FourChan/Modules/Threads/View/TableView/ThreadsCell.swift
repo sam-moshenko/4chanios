@@ -46,7 +46,6 @@ class ThreadsCell: BaseTableViewCell {
     lazy var verticalStackViewAuthorAndDate: UIStackView = build {
         $0.axis = .vertical
         $0.alignment = .leading
-        
         $0.addArrangedSubview(authorLabel)
         $0.addArrangedSubview(dateLabel)
     }

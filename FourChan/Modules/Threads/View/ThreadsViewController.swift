@@ -23,6 +23,7 @@ class ThreadsViewController: UIViewController {
         boards.forEach { board in
             let action = UIAlertAction(title: board.description, style: .default) { _ in
                 self.store.dispatch(.boardDidChoose(board))
+                self.view.alpha = 0
             }
             alertController.addAction(action)
         }
@@ -39,8 +40,10 @@ class ThreadsViewController: UIViewController {
                 break
             case .initial(let viewModel):
                 vc.contentView.configure(viewModel)
+                self.view.alpha = 1
             case .chooseBoard(let boards):
                 vc.showBoards(boards)
+                //self.view.alpha = 0
             case .openThread(let cellModels):
                 let threadVc = ThreadViewController(posts: cellModels)
                 vc.present(threadVc, animated: true)

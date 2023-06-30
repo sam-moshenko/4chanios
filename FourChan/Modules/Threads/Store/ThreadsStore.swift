@@ -8,6 +8,7 @@ class ThreadsStore {
              boardButtonTapped,
              boardDidChoose(ThreadsViewModel.Board),
              didSelectThread(ThreadsViewModel.CellModel)
+        
     }
     
     enum State {
