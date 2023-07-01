@@ -7,6 +7,28 @@ class ThreadsViewController: UIViewController {
     }
     private let store: ThreadsStore = .init()
     
+    var indicator: UIActivityIndicatorView = build {
+        $0.startAnimating()
+    }
+    
+    lazy var loadView: UIViewController = build{
+        $0.modalPresentationStyle = .overFullScreen
+        $0.view.backgroundColor = .gray.withAlphaComponent(0.5)
+        $0.view.addSubview(indicator)
+        indicator.snp.makeConstraints{
+            $0.center.equalToSuperview()
+        }
+    }
+    
+    func showLoad() {
+        present(self.loadView, animated: false)
+    }
+    
+    func hideLoad() {
+        loadView.dismiss(animated: false, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         //При переходе в темный режим виден белый фон, исправить чтобы в темном режиме фон становился черным
         view.backgroundColor = .systemBackground
@@ -23,8 +45,7 @@ class ThreadsViewController: UIViewController {
         boards.forEach { board in
             let action = UIAlertAction(title: board.id, style: .default) { _ in
                 self.store.dispatch(.boardDidChoose(board))
-                
-                //self.showLoad()
+                self.showLoad()
             }
             alertController.addAction(action)
         }
@@ -34,21 +55,7 @@ class ThreadsViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-//    func showLoad() {
-//
-//        let indicator: UIActivityIndicatorView = .init()
-//
-//        let loadView: UIViewController = build{
-//            $0.modalPresentationStyle = .overFullScreen
-//            $0.view.backgroundColor = .gray.withAlphaComponent(0.5)
-//            $0.view.addSubview(indicator)
-//            indicator.startAnimating()
-//            indicator.snp.makeConstraints{
-//                $0.center.equalToSuperview()
-//            }
-//        }
-//        present(loadView, animated: false)
-//    }
+
     
     private func subscribe() {
         store.$state.observe(self) { vc, state in
@@ -57,6 +64,7 @@ class ThreadsViewController: UIViewController {
                 break
             case .initial(let viewModel):
                 vc.contentView.configure(viewModel)
+                self.hideLoad()
             case .chooseBoard(let boards):
                 vc.showBoards(boards)
             case .openThread(let cellModels):

@@ -8,6 +8,7 @@ class ThreadsStore {
              boardButtonTapped,
              boardDidChoose(ThreadsViewModel.Board),
              didSelectThread(ThreadsViewModel.CellModel)
+             //loading(ThreadsViewController)
         
     }
     
@@ -30,11 +31,12 @@ class ThreadsStore {
             getThreadsAndBoards()
         case .boardButtonTapped:
             state = .chooseBoard(boards)
-            
         case .boardDidChoose(let board):
             getThreads(board: board)
         case .didSelectThread(let cellModel):
             state = .openThread(cached[cellModel.id]!)
+//        case .loading(ThreadsViewController):
+            
         }
     }
     
@@ -65,8 +67,8 @@ class ThreadsStore {
         }.always {
             //loadingfinish
         }
-        
     }
+    
     
 }
 

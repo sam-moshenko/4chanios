@@ -76,7 +76,6 @@ class ThreadsCell: BaseTableViewCell {
         $0.numberOfLines = 2
     }
     
-    
     override func setup() {
         contentView.addSubview(horizontalStackView) { $0.edges.equalToSuperview().inset(4) }
     }
