@@ -31,22 +31,21 @@ class ThreadsCell: BaseTableViewCell {
         $0.axis = .horizontal
         $0.alignment = .top
         $0.spacing = 4
-        $0.addArrangedSubview(verticalStackViewTitle)
+        $0.addArrangedSubview(titleLabel)
+        $0.addArrangedSubview(build(UIView()) {
+            $0.snp.makeConstraints {
+                $0.height.equalTo(30)
+            }
+            $0.setContentHuggingPriority(.init(1), for: .horizontal)
+            $0.setContentHuggingPriority(.init(1), for: .vertical)
+        })
         $0.addArrangedSubview(verticalStackViewAuthorAndDate)
 
-    }
-        
-    lazy var verticalStackViewTitle: UIStackView = build {
-        $0.axis = .vertical
-        $0.alignment = .leading
-        $0.spacing = 4
-        $0.addArrangedSubview(titleLabel)
     }
     
     lazy var verticalStackViewAuthorAndDate: UIStackView = build {
         $0.axis = .vertical
         $0.alignment = .leading
-        
         $0.addArrangedSubview(authorLabel)
         $0.addArrangedSubview(dateLabel)
     }
@@ -76,6 +75,7 @@ class ThreadsCell: BaseTableViewCell {
         $0.font = UIFont.systemFont(ofSize: 9, weight: .bold)
         $0.numberOfLines = 2
     }
+    
     
     override func setup() {
         contentView.addSubview(horizontalStackView) { $0.edges.equalToSuperview().inset(4) }

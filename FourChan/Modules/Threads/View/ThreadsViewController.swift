@@ -21,8 +21,10 @@ class ThreadsViewController: UIViewController {
         //Добавить локализацию
         let alertController = UIAlertController(title: "Выберите доску", message: nil, preferredStyle: .alert)
         boards.forEach { board in
-            let action = UIAlertAction(title: board.description, style: .default) { _ in
+            let action = UIAlertAction(title: board.id, style: .default) { _ in
                 self.store.dispatch(.boardDidChoose(board))
+                
+                //self.showLoad()
             }
             alertController.addAction(action)
         }
@@ -31,6 +33,22 @@ class ThreadsViewController: UIViewController {
         alertController.addAction(buttonCancel)
         present(alertController, animated: true)
     }
+    
+//    func showLoad() {
+//
+//        let indicator: UIActivityIndicatorView = .init()
+//
+//        let loadView: UIViewController = build{
+//            $0.modalPresentationStyle = .overFullScreen
+//            $0.view.backgroundColor = .gray.withAlphaComponent(0.5)
+//            $0.view.addSubview(indicator)
+//            indicator.startAnimating()
+//            indicator.snp.makeConstraints{
+//                $0.center.equalToSuperview()
+//            }
+//        }
+//        present(loadView, animated: false)
+//    }
     
     private func subscribe() {
         store.$state.observe(self) { vc, state in

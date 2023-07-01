@@ -14,7 +14,7 @@ extension Provider {
         request("\(board)/thread/\(thread).json")
     }
     
-    func getBoards() -> Promise<ThreadResponse> {
+    func getBoards() -> Promise<Boards> {
         request("boards.json")
     }
 }
