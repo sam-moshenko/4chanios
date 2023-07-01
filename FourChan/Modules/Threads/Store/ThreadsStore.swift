@@ -8,14 +8,16 @@ class ThreadsStore {
              boardButtonTapped,
              boardDidChoose(ThreadsViewModel.Board),
              didSelectThread(ThreadsViewModel.CellModel)
-             //loading(ThreadsViewController)
         
     }
     
     enum State {
         case initial(ThreadsViewModel),
              chooseBoard([ThreadsViewModel.Board]),
-             openThread([ThreadsViewModel.CellModel])
+             openThread([ThreadsViewModel.CellModel]),
+             loading,
+             loadingFinish
+            
         
     }
     
@@ -41,7 +43,7 @@ class ThreadsStore {
     }
     
     private func getThreads(board: ThreadsViewModel.Board) {
-        //loading
+        state = .loading
         provider.getThreads(board.id).then {
             $0.compactMap {
                 let cellModels = $0.posts.compactMap {
@@ -55,17 +57,17 @@ class ThreadsStore {
             self.state = .initial(.init(board: board, cells: $0))
             
         }.always {
-            //loadingfinished
+            self.state = .loadingFinish
         }
     }
     
     private func getThreadsAndBoards () {
-        //loading
+        state = .loading
         provider.getBoards().then {
             self.boards = $0.boards.map(ThreadsViewModel.Board.init)
             self.getThreads(board: self.boards.first!)
         }.always {
-            //loadingfinish
+            self.state = .loadingFinish
         }
     }
     

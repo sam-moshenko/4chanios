@@ -21,11 +21,8 @@ class ThreadsViewController: UIViewController {
     }
     
     func showLoad() {
+        guard loadView.parent == nil else { return }
         present(self.loadView, animated: false)
-    }
-    
-    func hideLoad() {
-        loadView.dismiss(animated: false, completion: nil)
     }
     
     
@@ -64,12 +61,16 @@ class ThreadsViewController: UIViewController {
                 break
             case .initial(let viewModel):
                 vc.contentView.configure(viewModel)
-                self.hideLoad()
             case .chooseBoard(let boards):
                 vc.showBoards(boards)
             case .openThread(let cellModels):
                 let threadVc = ThreadViewController(posts: cellModels)
                 vc.present(threadVc, animated: true)
+            case .loading:
+                vc.showLoad()
+            case .loadingFinish:
+                self.loadView.hideload()
+                
             }
         }
     }
@@ -85,4 +86,9 @@ extension ThreadsViewController: ThreadsViewDelegate {
     }
 }
 
-
+extension UIViewController {
+    func hideload () {
+        guard self.parent != nil  else { return }
+        dismiss(animated: false)
+    }
+}
