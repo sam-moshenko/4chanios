@@ -4,13 +4,17 @@ struct ThreadsViewModel {
     var board: Board
     var cells: [CellModel]
     
-    enum Board: String, CaseIterable { 
-        //Добавить новую доску, например /fit/
-        case a, v, mu, gd, fit
-        
+    struct Board {
+        var id: String
+        var title: String
         
         var description: String {
-            "/\(rawValue)/"
+            "/\(id)/ - \(title)"
+        }
+        
+        init(data: Boards.Board){
+            id = data.board
+            title = data.title
         }
     }
     
@@ -81,4 +85,6 @@ extension ThreadsViewModel.CellModel {
         let dateBoard = dayConfigure(date: date)
         return dateBoard
     }
+    
+
 }

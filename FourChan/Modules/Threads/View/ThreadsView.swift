@@ -24,6 +24,7 @@ class ThreadsView: BaseView {
         $0.delegate = self
     }
     
+    
     weak var delegate: ThreadsViewDelegate?
     
     private let dataSource: ThreadsTableViewDatasource = .init()

@@ -21,9 +21,10 @@ class ThreadsViewController: UIViewController {
         //Добавить локализацию
         let alertController = UIAlertController(title: "Выберите доску", message: nil, preferredStyle: .alert)
         boards.forEach { board in
-            let action = UIAlertAction(title: board.description, style: .default) { _ in
+            let action = UIAlertAction(title: board.id, style: .default) { _ in
                 self.store.dispatch(.boardDidChoose(board))
-                self.view.alpha = 0
+                
+                //self.showLoad()
             }
             alertController.addAction(action)
         }
@@ -33,6 +34,22 @@ class ThreadsViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+//    func showLoad() {
+//
+//        let indicator: UIActivityIndicatorView = .init()
+//
+//        let loadView: UIViewController = build{
+//            $0.modalPresentationStyle = .overFullScreen
+//            $0.view.backgroundColor = .gray.withAlphaComponent(0.5)
+//            $0.view.addSubview(indicator)
+//            indicator.startAnimating()
+//            indicator.snp.makeConstraints{
+//                $0.center.equalToSuperview()
+//            }
+//        }
+//        present(loadView, animated: false)
+//    }
+    
     private func subscribe() {
         store.$state.observe(self) { vc, state in
             switch state {
@@ -40,10 +57,8 @@ class ThreadsViewController: UIViewController {
                 break
             case .initial(let viewModel):
                 vc.contentView.configure(viewModel)
-                self.view.alpha = 1
             case .chooseBoard(let boards):
                 vc.showBoards(boards)
-                //self.view.alpha = 0
             case .openThread(let cellModels):
                 let threadVc = ThreadViewController(posts: cellModels)
                 vc.present(threadVc, animated: true)

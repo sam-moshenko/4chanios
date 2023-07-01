@@ -244,8 +244,8 @@
 		91CFDC252A4058A600B15ECC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				91CFDC262A4058B700B15ECC /* BaseView.swift */,
 				91CFDC282A4058D000B15ECC /* Builder.swift */,
+				91CFDC262A4058B700B15ECC /* BaseView.swift */,
 				91CFDC3A2A40710E00B15ECC /* Observable.swift */,
 			);
 			path = Helpers;
