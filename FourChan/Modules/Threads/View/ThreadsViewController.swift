@@ -20,8 +20,10 @@ class ThreadsViewController: UIViewController {
         }
     }
     
+    let localizedString = NSLocalizedString("helloKey", comment: "")
+    
     func showLoad() {
-        guard loadView.parent == nil else { return }
+        guard loadView.isBeingPresented == false else { return }
         present(self.loadView, animated: false)
     }
     
@@ -33,12 +35,11 @@ class ThreadsViewController: UIViewController {
         super.viewDidLoad()
         subscribe()
         store.dispatch(.viewDidLoad)
-        
     }
     
     func showBoards(_ boards: [ThreadsViewModel.Board]) {
         //Добавить локализацию
-        let alertController = UIAlertController(title: "Выберите доску", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("boardkey", comment: ""), message: nil, preferredStyle: .alert)
         boards.forEach { board in
             let action = UIAlertAction(title: board.id, style: .default) { _ in
                 self.store.dispatch(.boardDidChoose(board))
@@ -47,7 +48,7 @@ class ThreadsViewController: UIViewController {
             alertController.addAction(action)
         }
         // Добавить кнопку отмены в выборе досок
-        let buttonCancel = UIAlertAction(title: "Отмена", style: .cancel)
+        let buttonCancel = UIAlertAction(title: NSLocalizedString("cancelkey", comment: ""), style: .cancel)
         alertController.addAction(buttonCancel)
         present(alertController, animated: true)
     }
@@ -70,15 +71,18 @@ class ThreadsViewController: UIViewController {
                 vc.showLoad()
             case .loadingFinish:
                 self.loadView.hideload()
-                
             }
         }
     }
 }
 
-extension ThreadsViewController: ThreadsViewDelegate {
+extension ThreadsViewController: ThreadsViewDelegate, ThreadsCellDelegate {
     func boardButtonTapped() {
         store.dispatch(.boardButtonTapped)
+    }
+    
+    func imageTapped() {
+        store.dispatch(.imageTapped)
     }
     
     func didSelectItem(_ item: ThreadsViewModel.CellModel) {
@@ -88,7 +92,7 @@ extension ThreadsViewController: ThreadsViewDelegate {
 
 extension UIViewController {
     func hideload () {
-        guard self.parent != nil  else { return }
+        guard self.isBeingDismissed == false  else { return }
         dismiss(animated: false)
     }
 }

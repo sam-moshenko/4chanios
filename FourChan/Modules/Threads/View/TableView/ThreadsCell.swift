@@ -1,6 +1,10 @@
 import UIKit
 import Kingfisher
 
+protocol ThreadsCellDelegate: AnyObject {
+    func imageTapped()
+}
+
 class ThreadsCell: BaseTableViewCell {
     
     lazy var horizontalStackView: UIStackView = build {
@@ -60,11 +64,17 @@ class ThreadsCell: BaseTableViewCell {
         $0.numberOfLines = 7
     }
     
-    var iconImageView: UIImageView = build {
+    let tapGesture = UITapGestureRecognizer(target: ThreadsCell.self, action: #selector(imageTapped))
+    
+    
+    
+    lazy var iconImageView: UIImageView = build {
         $0.snp.makeConstraints { $0.size.equalTo(60) }
         $0.contentMode = .scaleToFill
         $0.layer.cornerRadius = 4
         $0.clipsToBounds = true
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(tapGesture)
     }
     
     var authorLabel: UILabel = build {
@@ -88,4 +98,13 @@ class ThreadsCell: BaseTableViewCell {
         iconImageView.isHidden = model.imageUrl == nil
         iconImageView.kf.setImage(with: model.imageUrl)
     }
+    
+    weak var delegate: ThreadsCellDelegate?
+    
+    @objc
+    func imageTapped() {
+        //delegate?.imageTapped()
+        print("nazhal")
+    }
+    
 }

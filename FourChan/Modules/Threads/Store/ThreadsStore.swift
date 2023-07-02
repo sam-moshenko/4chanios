@@ -6,6 +6,7 @@ class ThreadsStore {
     enum Action {
         case viewDidLoad,
              boardButtonTapped,
+             imageTapped,
              boardDidChoose(ThreadsViewModel.Board),
              didSelectThread(ThreadsViewModel.CellModel)
         
@@ -37,14 +38,14 @@ class ThreadsStore {
             getThreads(board: board)
         case .didSelectThread(let cellModel):
             state = .openThread(cached[cellModel.id]!)
-//        case .loading(ThreadsViewController):
-            
+        case .imageTapped:
+            state = .loading
         }
     }
     
-    private func getThreads(board: ThreadsViewModel.Board) {
+    private func getThreads(board: ThreadsViewModel.Board) -> Promise<Void> {
         state = .loading
-        provider.getThreads(board.id).then {
+        return provider.getThreads(board.id).then {
             $0.compactMap {
                 let cellModels = $0.posts.compactMap {
                     ThreadsViewModel.CellModel(data: $0, board: board.id)
@@ -55,17 +56,16 @@ class ThreadsStore {
             }
         }.then {
             self.state = .initial(.init(board: board, cells: $0))
-            
         }.always {
             self.state = .loadingFinish
         }
     }
     
-    private func getThreadsAndBoards () {
+    private func getThreadsAndBoards() -> Promise<Void> {
         state = .loading
-        provider.getBoards().then {
+        return provider.getBoards().then {
             self.boards = $0.boards.map(ThreadsViewModel.Board.init)
-            self.getThreads(board: self.boards.first!)
+            return self.getThreads(board: self.boards.first!)
         }.always {
             self.state = .loadingFinish
         }

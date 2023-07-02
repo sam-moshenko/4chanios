@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  FourChan
+
+  Created by Дмитрий Михайлов on 02.07.2023.
+  
+*/
+
+"boardkey" = "Choose Board";
+"cancelkey" = "Cancel";

@@ -66,6 +66,7 @@ extension ThreadsViewModel.CellModel {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "MM/dd/yy(EEE)HH:mm:ss"
         dateFormater.timeZone = .current
+        dateFormater.locale = Locale(identifier: "en_US_POSIX")
         let dateReturn = dateFormater.date(from: date)
         return dateReturn!
     }
