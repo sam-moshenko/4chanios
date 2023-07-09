@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71C3B0E62A51753100307F03 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71C3B0E82A51753100307F03 /* Localizable.strings */; };
+		71C3B0EB2A51757300307F03 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71C3B0ED2A51757300307F03 /* Localizable.strings */; };
 		915D72032A40520D001D56D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D72022A40520D001D56D3 /* AppDelegate.swift */; };
 		915D72052A40520D001D56D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D72042A40520D001D56D3 /* SceneDelegate.swift */; };
 		915D720C2A40520D001D56D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 915D720B2A40520D001D56D3 /* Assets.xcassets */; };
@@ -57,11 +59,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7172354F2A505318001C3775 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		71C3B0E72A51753100307F03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		71C3B0EC2A51757300307F03 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		915D71FF2A40520D001D56D3 /* FourChan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FourChan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		915D72022A40520D001D56D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		915D72042A40520D001D56D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		915D720B2A40520D001D56D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		915D720E2A40520D001D56D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		915D72102A40520D001D56D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		915D72152A40520D001D56D3 /* FourChanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FourChanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		915D72192A40520D001D56D3 /* FourChanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourChanTests.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 		915D71F62A40520D001D56D3 = {
 			isa = PBXGroup;
 			children = (
+				71C3B0ED2A51757300307F03 /* Localizable.strings */,
+				71C3B0E82A51753100307F03 /* Localizable.strings */,
 				915D72012A40520D001D56D3 /* FourChan */,
 				915D72182A40520D001D56D3 /* FourChanTests */,
 				915D72222A40520D001D56D3 /* FourChanUITests */,
@@ -244,8 +250,8 @@
 		91CFDC252A4058A600B15ECC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				91CFDC262A4058B700B15ECC /* BaseView.swift */,
 				91CFDC282A4058D000B15ECC /* Builder.swift */,
+				91CFDC262A4058B700B15ECC /* BaseView.swift */,
 				91CFDC3A2A40710E00B15ECC /* Observable.swift */,
 			);
 			path = Helpers;
@@ -399,7 +405,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				ru,
 			);
 			mainGroup = 915D71F62A40520D001D56D3;
 			packageReferences = (
@@ -425,6 +431,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				915D720F2A40520D001D56D3 /* LaunchScreen.storyboard in Resources */,
+				71C3B0EB2A51757300307F03 /* Localizable.strings in Resources */,
+				71C3B0E62A51753100307F03 /* Localizable.strings in Resources */,
 				915D720C2A40520D001D56D3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,10 +512,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		71C3B0E82A51753100307F03 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71C3B0E72A51753100307F03 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		71C3B0ED2A51757300307F03 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71C3B0EC2A51757300307F03 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		915D720D2A40520D001D56D3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				915D720E2A40520D001D56D3 /* Base */,
+				7172354F2A505318001C3775 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -519,6 +543,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -579,6 +604,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -636,6 +662,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FourChan/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -662,6 +689,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FourChan/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

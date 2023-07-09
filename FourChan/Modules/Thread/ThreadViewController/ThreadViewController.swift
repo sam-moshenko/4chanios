@@ -17,7 +17,8 @@ class ThreadViewController: UITableViewController {
         tableView.register(ThreadsCell.self)
         tableView.dataSource = dataSource
         tableView.delegate = self
-        
         super.viewDidLoad()
     }
 }
+
+

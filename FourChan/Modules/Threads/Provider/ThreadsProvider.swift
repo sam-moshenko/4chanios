@@ -13,4 +13,8 @@ extension Provider {
     func getThreadContent(board: String, thread: Int) -> Promise<ThreadResponse> {
         request("\(board)/thread/\(thread).json")
     }
+    
+    func getBoards() -> Promise<Boards> {
+        request("boards.json")
+    }
 }
