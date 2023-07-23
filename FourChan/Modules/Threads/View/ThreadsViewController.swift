@@ -7,28 +7,29 @@ class ThreadsViewController: UIViewController {
     }
     private let store: ThreadsStore = .init()
     
+    var indicator: UIActivityIndicatorView?
     override func viewDidLoad() {
-        if traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = .black
-        } else {
-            view.backgroundColor = .white
-        }
+        view.backgroundColor = UIColor.systemBackground
         view.addSubview(contentView) { $0.edges.equalTo(view.safeAreaLayoutGuide) }
         super.viewDidLoad()
         
         subscribe()
         store.dispatch(.viewDidLoad)
+        
     }
     
     func showBoards(_ boards: [ThreadsViewModel.Board]) {
-        let alertController = UIAlertController(title: "Choose board", message: nil, preferredStyle: .alert)
+        let chooseBoard = NSLocalizedString("Choose board", comment: "The title of the board")
+        let alertController = UIAlertController(title: chooseBoard, message: nil, preferredStyle: .alert)
         boards.forEach { board in
             let action = UIAlertAction(title: board.description, style: .default) { _ in
                 self.store.dispatch(.boardDidChoose(board))
             }
-            alertController.addAction(action)
+            alertController.addAction(action)	
         }
         present(alertController, animated: true)
+        let cancelTitle = NSLocalizedString("cancel", comment: "The title of the cancel button")
+        alertController.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
     }
     
     private func subscribe() {

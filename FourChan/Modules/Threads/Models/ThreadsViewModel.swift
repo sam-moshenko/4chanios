@@ -5,22 +5,21 @@ struct ThreadsViewModel {
     var cells: [CellModel]
     
     enum Board: String, CaseIterable {
-        case a, v, mu, gd, fit, cancel
+        case a, v, mu, gd, fit
         
         var description: String {
+            //"/\(rawValue)/"
             switch self {
             case .a:
-                return "/\(rawValue)/ - Anime & Manga"
+                return "/a/ - Anime & Manga"
             case .v:
-                return "/\(rawValue)/ - Video Games"
+                return "/v/ - Video Games"
             case .mu:
-                return "/\(rawValue)/ - Music"
+                return " /mu/ - Music"
             case .gd:
-                return "/\(rawValue)/ - Graphic Design"
+                return "/gd/ - Graphic Design"
             case .fit:
-                return "/\(rawValue)/ - Fitness"
-            case .cancel:
-                return "Cancel"
+                return "/fit/ - Fitness"
             }
         }
     }
@@ -30,30 +29,21 @@ struct ThreadsViewModel {
         var title: String?
         var description: String?
         var imageUrl: URL?
-        var creationDate: Date?
-        var username: String?
+        var userName: String?
+        var creationDate: String?
         
         init?(data: ThreadResponse.Post, board: String) {
             if data.sub == nil && data.com == nil && data.tim == nil { return nil }
             id = data.no
             title = data.sub
-            description = data.com
+            description = data.cleanedDescription
+            
             if let tim = data.tim, let ext = data.ext {
                 imageUrl = URL(string: "https://i.4cdn.org/\(board)/\(tim)\(ext)")!
             }
-            if let timestamp = data.time {
-                creationDate = Date(timeIntervalSince1970: TimeInterval(timestamp))
-            }
-            username = data.name
+            userName = data.name
+            creationDate = data.formattedDate
         }
-        func formattedCreationDate() -> String? {
-            guard let creationDate = creationDate else {
-                return nil
-            }
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
-            return "Сегодня \(dateFormatter.string(from: creationDate))"
-        }
+        
     }
 }
