@@ -35,6 +35,7 @@ class ThreadsView: BaseView {
     func configure(_ viewModel: ThreadsViewModel) {
         dataSource.items = viewModel.cells
         tableView.reloadData()
+        boardButton.setTitle(viewModel.board.description, for: .normal)
        
     }
     
@@ -47,5 +48,9 @@ class ThreadsView: BaseView {
 extension ThreadsView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelectItem(dataSource.items[indexPath.row])
+    }
+    
+    @objc func imgTap(tapGesture: UITapGestureRecognizer) {
+       //Do further execution where you need idToMove
     }
 }
